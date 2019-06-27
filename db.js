@@ -1,7 +1,7 @@
-const mongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const dbname = "crud_mongodb";
-const url = 'mongodb://locahost:27017';
+const url = 'mongodb://localhost:27017';
 const mongoOptions = { useNewUrlParser: true };
 
 const state = {
@@ -12,7 +12,7 @@ const connect = (cb) => {
   if (state.db)
     cb()
   else {
-    mongoClient.connect(url, mongoOptions, (err, client) => {
+    MongoClient.connect(url, mongoOptions, (err, client) => {
       if (err)
         cb(err)
       else {
@@ -24,7 +24,7 @@ const connect = (cb) => {
 }
 
 const getPrimaryKey = (_id) => {
-  return ObjectID(_id)
+  return ObjectID(_id);
 }
 
 const getDB = () => {
